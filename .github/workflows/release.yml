@@ -1,0 +1,26 @@
+name: Release Linux binary
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build release binary
+        run: cargo build --locked --release
+      - name: Package binary
+        run: cp target/release/nowascii nowascii-linux-x86_64 && chmod +x nowascii-linux-x86_64
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: nowascii-linux-x86_64
+
