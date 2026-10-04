@@ -1,0 +1,19 @@
+[package]
+name = "nowascii"
+version = "0.1.0"
+edition = "2021"
+description = "Colorful square terminal album art for the currently playing MPRIS track"
+license = "MIT"
+repository = "https://github.com/pneftekin/nowascii"
+readme = "README.md"
+
+[dependencies]
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp", "gif"] }
+ureq = { version = "2.12", default-features = false, features = ["tls"] }
+zbus = { version = "5", default-features = false, features = ["blocking-api", "async-io"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
