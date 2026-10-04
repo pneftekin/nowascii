@@ -2,8 +2,7 @@
 
 Print the album cover for the track playing on your Linux desktop as colored ASCII art.
 
-`nowascii` reads the current track and cover URL from MPRIS, then draws the cover in your terminal. It center-crops the image to a square and uses `@%#*+=-:.` for shading.
-
+`nowascii` reads the current track and cover URL from MPRIS, then draws the cover in your terminal.
 ## Install
 
 Prebuilt release binaries are available for x86_64 Linux on the [Releases page](https://github.com/pneftekin/nowascii/releases/latest). Install `curl` with your distro's package manager if you don't already have it:
